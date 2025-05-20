@@ -3,6 +3,8 @@ package com.codeWithProjects.ecom.entity;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.codeWithProjects.ecom.dto.ReviewDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -12,7 +14,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
-import lombok.Data;
 
 @Entity
 public class Review {
@@ -21,7 +22,7 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long rating;
+    private Integer rating;
 
     @Lob
     private String description;
@@ -51,11 +52,11 @@ public class Review {
         this.id = id;
     }
 
-    public Long getRating() {
+    public Integer getRating() {
         return rating;
     }
 
-    public void setRating(Long rating) {
+    public void setRating(Integer rating) {
         this.rating = rating;
     }
 
@@ -91,5 +92,16 @@ public class Review {
         this.img = img;
     }
 
+    public ReviewDTO getDTO(){
+        ReviewDTO reviewDTO = new ReviewDTO();
+        reviewDTO.setId(id);
+        reviewDTO.setRating(rating);
+        reviewDTO.setDescription(description);
+        reviewDTO.setReturnImg(img);
+        reviewDTO.setUserId(user.getId());
+        reviewDTO.setProductId(product.getId());
+        reviewDTO.setUserName(user.getName());
+        return reviewDTO;
+    }
 
 }

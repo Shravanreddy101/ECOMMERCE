@@ -2,6 +2,7 @@ package com.codeWithProjects.ecom.services.admin.adminOrder;
 
 import java.util.List;
 
+import com.codeWithProjects.ecom.dto.AnalyticsResponseDTO;
 import com.codeWithProjects.ecom.dto.OrderDTO;
 import com.codeWithProjects.ecom.enums.OrderStatus;
 
@@ -17,4 +18,6 @@ public interface AdminOrderService {
     public List<OrderDTO> getOrdersByFilter(String name, OrderStatus orderStatus);
 
     public OrderDTO changeOrderStatus(Long orderId, String status);
+
+    public AnalyticsResponseDTO calculateAnalytics();
 }

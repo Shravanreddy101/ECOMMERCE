@@ -52,7 +52,7 @@ public class WebSecurityConfig implements WebMvcConfigurer {
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> 
                 auth
-                    .requestMatchers("/sign-up","/authenticate","/api/customer/cart","/api/customer/cart/**","/api/customer/addition","/api/customer/subtraction","/api/admin/order/filter", "/api/admin/**","/api/customer/coupon/**", "/api/customer/**").permitAll()
+                    .requestMatchers("/sign-up","/authenticate","/api/customer/cart","/api/admin/order/analytics","/order", "/order/**","/api/customer/cart/**","/api/customer/wishlist","/api/customer/wishlist/**","/api/customer/addToWishList","/api/customer/removeByProductId/**","/api/customer/removeByProductId","/api/customer/removeFromWishlist","/api/customer/removeFromWishlist/**","/api/customer/addToWishList/**","/api/customer/addition","/api/customer/subtraction","/api/admin/order/filter", "/api/admin/**","/api/customer/coupon/**", "/api/customer/**").permitAll()
                     .anyRequest().authenticated()
             );
             

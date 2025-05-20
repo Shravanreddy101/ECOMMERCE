@@ -243,5 +243,14 @@ public class CartServiceImpl implements CartService{
     }
 
 
+    @Override
+    public OrderDTO searchOrderByTrackingId(UUID trackingId){
+        Optional<Order> optionalOrder = orderRepository.findByTrackingId(trackingId);
+        if(optionalOrder.isPresent()){
+            Order order = optionalOrder.get();
+            return order.getDTO();
+        }
+        return null;
+    }
 
 }

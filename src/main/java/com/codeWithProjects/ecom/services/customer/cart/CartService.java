@@ -1,5 +1,7 @@
 package com.codeWithProjects.ecom.services.customer.cart;
 
+import java.util.UUID;
+
 import org.springframework.http.ResponseEntity;
 
 import com.codeWithProjects.ecom.dto.AddProductInCartDTO;
@@ -21,5 +23,7 @@ public interface CartService {
     public OrderDTO decreaseProductQuantity(AddProductInCartDTO addProductInCartDTO);
 
     public OrderDTO placeOrder(PlaceOrderDTO placeOrderDTO);
+
+    public OrderDTO searchOrderByTrackingId(UUID trackingId);
 }
 

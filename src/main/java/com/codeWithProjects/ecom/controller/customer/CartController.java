@@ -1,5 +1,7 @@
 package com.codeWithProjects.ecom.controller.customer;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,8 @@ import com.codeWithProjects.ecom.dto.OrderDTO;
 import com.codeWithProjects.ecom.dto.PlaceOrderDTO;
 import com.codeWithProjects.ecom.entity.CartItems;
 import com.codeWithProjects.ecom.services.customer.cart.CartService;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("/api/customer")
@@ -84,6 +88,16 @@ public class CartController {
         OrderDTO orderDTO = cartService.placeOrder(placeOrderDTO);
         return ResponseEntity.ok().body(orderDTO);
     }
+
+
+    @GetMapping("/getOrderByTrackingId/{trackingId}")
+    @PreAuthorize("hasRole('CUSTOMER')")
+    public ResponseEntity<OrderDTO> getOrderByTrackingId(@PathVariable UUID trackingId){
+        OrderDTO orderDTO = cartService.searchOrderByTrackingId(trackingId);
+        return ResponseEntity.ok().body(orderDTO);
+    }
+    
+    
         
 
 }
